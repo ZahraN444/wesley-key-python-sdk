@@ -11,11 +11,11 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install wesley-key-sdk==1.1.1
+pip install wesley-key-sdk==1.1.2
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/wesley-key-sdk/1.1.1
+https://pypi.python.org/pypi/wesley-key-sdk/1.1.2
 
 ## Test the SDK
 
@@ -30,7 +30,7 @@ pytest
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -61,19 +61,19 @@ client = CypresstestapiClient(
 
 ## List of APIs
 
-* [API](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/controllers/api.md)
+* [API](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/controllers/api.md)
 
 ## SDK Infrastructure
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/http-response.md)
-* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/http-request.md)
+* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/http-response.md)
+* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/http-request.md)
 
 ### Utilities
 
-* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/api-helper.md)
-* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/http-date-time.md)
-* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/rfc3339-date-time.md)
-* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.1/doc/unix-date-time.md)
+* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/unix-date-time.md)
 
