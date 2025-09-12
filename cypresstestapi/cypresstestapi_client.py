@@ -23,7 +23,7 @@ class CypresstestapiClient(object):
     def __init__(self, http_client_instance=None,
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2,
-                 retry_statuses=None, retry_methods=None,
+                 retry_statuses=None, retry_methods=None, proxy_settings=None,
                  environment=Environment.PRODUCTION,
                  default_host='www.example.com', config=None):
         self.config = config or Configuration(
@@ -32,7 +32,8 @@ class CypresstestapiClient(object):
             http_call_back=http_call_back, timeout=timeout,
             max_retries=max_retries, backoff_factor=backoff_factor,
             retry_statuses=retry_statuses, retry_methods=retry_methods,
-            environment=environment, default_host=default_host)
+            proxy_settings=proxy_settings, environment=environment,
+            default_host=default_host)
 
         self.global_configuration = GlobalConfiguration(self.config)\
             .global_errors(BaseController.global_errors())\

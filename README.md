@@ -46,6 +46,7 @@ The following parameters are configurable for the API Client:
 | backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
 | retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ['GET', 'PUT']** |
+| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 
 The API client can be initialized as follows:
 
@@ -64,6 +65,10 @@ client = CypresstestapiClient(
 * [API](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/controllers/api.md)
 
 ## SDK Infrastructure
+
+### Configuration
+
+* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/1.1.2/doc/proxy-settings.md)
 
 ### HTTP
 
