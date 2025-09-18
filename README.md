@@ -13,11 +13,11 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install wesley-key-sdk==0.1.2
+pip install wesley-key-sdk==0.1.3
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/wesley-key-sdk/0.1.2
+https://pypi.python.org/pypi/wesley-key-sdk/0.1.3
 
 ## Test the SDK
 
@@ -32,7 +32,7 @@ pytest
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -48,10 +48,10 @@ The following parameters are configurable for the API Client:
 | backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
 | retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ['GET', 'PUT']** |
-| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| api_key_credentials | [`ApiKeyCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
-| http_basic_credentials | [`HttpBasicCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
-| petstore_auth_credentials | [`PetstoreAuthCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
+| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| api_key_credentials | [`ApiKeyCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
+| http_basic_credentials | [`HttpBasicCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
+| petstore_auth_credentials | [`PetstoreAuthCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
 
 The API client can be initialized as follows:
 
@@ -100,31 +100,31 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`api_key (Custom Header Signature)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/custom-header-signature.md)
-* [`httpBasic (Basic Authentication)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/basic-authentication.md)
-* [`petstore_auth (OAuth 2 Implicit Grant)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/auth/oauth-2-implicit-grant.md)
+* [`api_key (Custom Header Signature)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/custom-header-signature.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/basic-authentication.md)
+* [`petstore_auth (OAuth 2 Implicit Grant)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/auth/oauth-2-implicit-grant.md)
 
 ## List of APIs
 
-* [Pet](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/controllers/pet.md)
-* [Store](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/controllers/store.md)
-* [User](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/controllers/user.md)
+* [Pet](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/controllers/pet.md)
+* [Store](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/controllers/store.md)
+* [User](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/controllers/user.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/proxy-settings.md)
+* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/proxy-settings.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/http-response.md)
-* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/http-request.md)
+* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/http-response.md)
+* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/http-request.md)
 
 ### Utilities
 
-* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/api-helper.md)
-* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/http-date-time.md)
-* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/rfc3339-date-time.md)
-* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.2/doc/unix-date-time.md)
+* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/0.1.3/doc/unix-date-time.md)
 
