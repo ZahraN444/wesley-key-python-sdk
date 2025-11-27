@@ -5,9 +5,9 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| test_header | `str` | This is a test header<br>*Default*: `'TestHeaderDefaultValue'` |
+| default_host | `str` | *Default*: `'www.example.com'` |
 | environment | `Environment` | The API environment. <br> **Default: `Environment.PRODUCTION`** |
-| http_client_instance | `HttpClient` | The Http Client passed from the sdk user for making requests |
+| http_client_instance | `Union[Session, HttpClientProvider]` | The Http Client passed from the sdk user for making requests |
 | override_http_client_configuration | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
 | http_call_back | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
 | timeout | `float` | The value to use for connection timeout. <br> **Default: 60** |
@@ -16,42 +16,33 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ['GET', 'PUT']** |
 | proxy_settings | [`ProxySettings`](../doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| api_key_credentials | [`ApiKeyCredentials`](auth/custom-header-signature.md) | The credential object for Custom Header Signature |
-| http_basic_credentials | [`HttpBasicCredentials`](auth/basic-authentication.md) | The credential object for Basic Authentication |
-| petstore_auth_credentials | [`PetstoreAuthCredentials`](auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
 
 The API client can be initialized as follows:
 
-```python
-from swaggerpetstore.configuration import Environment
-from swaggerpetstore.http.auth.api_key import ApiKeyCredentials
-from swaggerpetstore.http.auth.http_basic import HttpBasicCredentials
-from swaggerpetstore.http.auth.petstore_auth import PetstoreAuthCredentials
-from swaggerpetstore.models.o_auth_scope_petstore_auth_enum import OAuthScopePetstoreAuthEnum
-from swaggerpetstore.swaggerpetstore_client import SwaggerpetstoreClient
+## Code-Based Client Initialization
 
-client = SwaggerpetstoreClient(
-    test_header='TestHeaderDefaultValue',
-    api_key_credentials=ApiKeyCredentials(
-        api_key='api_key'
-    ),
-    http_basic_credentials=HttpBasicCredentials(
-        username='username',
-        passwprd='passwprd'
-    ),
-    petstore_auth_credentials=PetstoreAuthCredentials(
-        o_auth_client_id='OAuthClientId',
-        o_auth_redirect_uri='OAuthRedirectUri',
-        o_auth_scopes=[
-            OAuthScopePetstoreAuthEnum.READPETS,
-            OAuthScopePetstoreAuthEnum.WRITEPETS
-        ]
-    ),
-    environment=Environment.PRODUCTION
+```python
+from cypresstestapi.configuration import Environment
+from cypresstestapi.cypresstestapi_client import CypresstestapiClient
+
+client = CypresstestapiClient(
+    environment=Environment.PRODUCTION,
+    default_host='www.example.com'
 )
 ```
 
-## Swagger Petstore Client
+## Environment-Based Client Initialization
+
+```python
+from cypresstestapi.cypresstestapi_client import CypresstestapiClient
+
+# Specify the path to your .env file if it’s located outside the project’s root directory.
+client = CypresstestapiClient.from_environment(dotenv_path='/path/to/.env')
+```
+
+See the [Environment-Based Client Initialization](../doc/environment-based-client-initialization.md) section for details.
+
+## Cypress Test API Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 
@@ -59,7 +50,5 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
-| pet | Gets PetController |
-| store | Gets StoreController |
-| user | Gets UserController |
+| api | Gets APIController |
 
