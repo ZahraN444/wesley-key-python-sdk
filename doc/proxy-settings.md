@@ -15,10 +15,10 @@ Represents the proxy server configurations for API calls.
 ## Usage Example
 
 ```python
-from cypresstestapi.cypresstestapi_client import CypresstestapiClient
-from cypresstestapi.http.proxy_settings import ProxySettings
+from swaggerpetstore.swaggerpetstore_client import SwaggerpetstoreClient
+from swaggerpetstore.http.proxy_settings import ProxySettings
 
-client = CypresstestapiClient(
+client = SwaggerpetstoreClient(
     proxy_settings=ProxySettings(
         address='http://localhost',
         port=8888,
