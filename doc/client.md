@@ -6,7 +6,7 @@ The following parameters are configurable for the API Client:
 | Parameter | Type | Description |
 |  --- | --- | --- |
 | default_host | `str` | *Default*: `"www.example.com"` |
-| environment | `Environment` | The API environment. <br> **Default: `Environment.PRODUCTION`** |
+| environment | [`Environment`](../README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | http_client_instance | `Union[Session, HttpClientProvider]` | The Http Client passed from the sdk user for making requests |
 | override_http_client_configuration | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
 | http_call_back | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
