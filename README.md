@@ -11,11 +11,11 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install wesley-key-sdk==3.0.5
+pip install wesley-key-sdk==3.0.6
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/wesley-key-sdk/3.0.5
+https://pypi.python.org/pypi/wesley-key-sdk/3.0.6
 
 ## Test the SDK
 
@@ -30,14 +30,14 @@ pytest
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
 | default_host | `str` | *Default*: `"www.example.com"` |
-| environment | [`Environment`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
+| environment | [`Environment`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | http_client_instance | `Union[Session, HttpClientProvider]` | The Http Client passed from the sdk user for making requests |
 | override_http_client_configuration | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
 | http_call_back | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
@@ -46,7 +46,7 @@ The following parameters are configurable for the API Client:
 | backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
 | retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ["GET", "PUT"]** |
-| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 
 The API client can be initialized as follows:
 
@@ -71,7 +71,7 @@ from cypresstestapi.cypresstestapi_client import CypresstestapiClient
 client = CypresstestapiClient.from_environment(dotenv_path='/path/to/.env')
 ```
 
-See the [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/environment-based-client-initialization.md) section for details.
+See the [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/environment-based-client-initialization.md) section for details.
 
 ## Environments
 
@@ -85,24 +85,24 @@ The SDK can be configured to use a different environment for making API calls. A
 
 ## List of APIs
 
-* [API](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/controllers/api.md)
+* [API](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/controllers/api.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/environment-based-client-initialization.md)
+* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/environment-based-client-initialization.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/http-response.md)
-* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/http-request.md)
+* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/http-response.md)
+* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/http-request.md)
 
 ### Utilities
 
-* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/api-helper.md)
-* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/http-date-time.md)
-* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/rfc3339-date-time.md)
-* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.5/doc/unix-date-time.md)
+* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/3.0.6/doc/unix-date-time.md)
 
