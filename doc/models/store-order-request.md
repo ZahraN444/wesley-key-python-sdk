@@ -1,9 +1,9 @@
 
-# Order
+# Store Order Request
 
 ## Structure
 
-`Order`
+`StoreOrderRequest`
 
 ## Fields
 
@@ -20,9 +20,9 @@
 
 ```json
 {
-  "id": 180,
-  "petId": 220,
-  "quantity": 136,
+  "id": 240,
+  "petId": 24,
+  "quantity": 196,
   "shipDate": "2016-03-13T12:52:32.123Z",
   "status": "placed"
 }

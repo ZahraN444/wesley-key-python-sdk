@@ -1,17 +1,11 @@
 
-# Getting Started with Webhooks and Callbacks API
+# Getting Started with Swagger Petstore
 
 ## Introduction
 
-A comprehensive API demonstrating webhooks and callbacks patterns.
+This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
 
-### Webhooks
-
-Webhooks allow your application to receive real-time notifications when certain events occur.
-
-### Callbacks
-
-Callbacks are used for asynchronous operations where the API will call back to your provided URL when the operation completes.
+Find out more about Swagger: [http://swagger.io](http://swagger.io)
 
 ## Install the Package
 
@@ -19,120 +13,132 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install wesley-key-sdk==4.1.1
+pip install wesley-key-sdk==4.1.3
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/wesley-key-sdk/4.1.1
+https://pypi.python.org/pypi/wesley-key-sdk/4.1.3
+
+## Test the SDK
+
+You can test the generated SDK and the server with test cases. `unittest` is used as the testing framework and `pytest` is used as the test runner. You can run the tests as follows:
+
+Navigate to the root directory of the SDK and run the following commands
+
+
+pip install -r test-requirements.txt
+pytest
+
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| test_header | `str` | This is a test header<br>*Default*: `"TestHeaderDefaultValue"` |
+| environment | [`Environment`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | http_client_instance | `Union[Session, HttpClientProvider]` | The Http Client passed from the sdk user for making requests |
 | override_http_client_configuration | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
 | http_call_back | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
-| timeout | `float` | The value to use for connection timeout. <br> **Default: 50** |
+| timeout | `float` | The value to use for connection timeout. <br> **Default: 60** |
 | max_retries | `int` | The number of times to retry an endpoint call if it fails. <br> **Default: 0** |
 | backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
-| retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524, 408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
-| retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ["GET", "PUT", "GET", "PUT"]** |
-| proxy_settings | [`ProxySettings`](doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| logging_configuration | [`LoggingConfiguration`](doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| api_key_credentials | [`ApiKeyCredentials`](doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
-| bearer_auth_credentials | [`BearerAuthCredentials`](doc/auth/oauth-2-bearer-token.md) | The credential object for OAuth 2 Bearer token |
+| retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
+| retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ["GET", "PUT"]** |
+| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| api_key_credentials | [`ApiKeyCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
+| http_basic_credentials | [`HttpBasicCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
+| petstore_auth_credentials | [`PetstoreAuthCredentials`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
 
 The API client can be initialized as follows:
 
 ### Code-Based Client Initialization
 
 ```python
-import logging
+from swaggerpetstore.configuration import Environment
+from swaggerpetstore.http.auth.api_key import ApiKeyCredentials
+from swaggerpetstore.http.auth.http_basic import HttpBasicCredentials
+from swaggerpetstore.http.auth.petstore_auth import PetstoreAuthCredentials
+from swaggerpetstore.models.o_auth_scope_petstore_auth_enum import OAuthScopePetstoreAuthEnum
+from swaggerpetstore.swaggerpetstore_client import SwaggerpetstoreClient
 
-from webhooksandcallbacksapi.configuration import Environment
-from webhooksandcallbacksapi.http.auth.api_key import ApiKeyCredentials
-from webhooksandcallbacksapi.http.auth.bearer_auth import BearerAuthCredentials
-from webhooksandcallbacksapi.logging.configuration.api_logging_configuration import LoggingConfiguration
-from webhooksandcallbacksapi.logging.configuration.api_logging_configuration import RequestLoggingConfiguration
-from webhooksandcallbacksapi.logging.configuration.api_logging_configuration import ResponseLoggingConfiguration
-from webhooksandcallbacksapi.webhooksandcallbacksapi_client import WebhooksandcallbacksapiClient
-
-client = WebhooksandcallbacksapiClient(
+client = SwaggerpetstoreClient(
+    test_header='TestHeaderDefaultValue',
     api_key_credentials=ApiKeyCredentials(
-        x_api_key='X-API-Key'
+        api_key='api_key'
     ),
-    bearer_auth_credentials=BearerAuthCredentials(
-        access_token='AccessToken'
+    http_basic_credentials=HttpBasicCredentials(
+        username='username',
+        passwprd='passwprd'
     ),
-    environment=Environment.PRODUCTION,
-    logging_configuration=LoggingConfiguration(
-        log_level=logging.INFO,
-        request_logging_config=RequestLoggingConfiguration(
-            log_body=True
-        ),
-        response_logging_config=ResponseLoggingConfiguration(
-            log_headers=True
-        )
-    )
+    petstore_auth_credentials=PetstoreAuthCredentials(
+        o_auth_client_id='OAuthClientId',
+        o_auth_redirect_uri='OAuthRedirectUri',
+        o_auth_scopes=[
+            OAuthScopePetstoreAuthEnum.READPETS,
+            OAuthScopePetstoreAuthEnum.WRITEPETS
+        ]
+    ),
+    environment=Environment.PRODUCTION
 )
 ```
 
 ### Environment-Based Client Initialization
 
 ```python
-from webhooksandcallbacksapi.webhooksandcallbacksapi_client import WebhooksandcallbacksapiClient
+from swaggerpetstore.swaggerpetstore_client import SwaggerpetstoreClient
 
 # Specify the path to your .env file if it’s located outside the project’s root directory.
-client = WebhooksandcallbacksapiClient.from_environment(dotenv_path='/path/to/.env')
+client = SwaggerpetstoreClient.from_environment(dotenv_path='/path/to/.env')
 ```
 
-See the [Environment-Based Client Initialization](doc/environment-based-client-initialization.md) section for details.
+See the [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/environment-based-client-initialization.md) section for details.
+
+## Environments
+
+The SDK can be configured to use a different environment for making API calls. Available environments are:
+
+### Fields
+
+| Name | Description |
+|  --- | --- |
+| PRODUCTION | **Default** |
+| ENVIRONMENT2 | - |
+| ENVIRONMENT3 | - |
 
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`ApiKey (Custom Header Signature)`](doc/auth/custom-header-signature.md)
-* [`BearerAuth (OAuth 2 Bearer token)`](doc/auth/oauth-2-bearer-token.md)
+* [`api_key (Custom Header Signature)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/custom-header-signature.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/basic-authentication.md)
+* [`petstore_auth (OAuth 2 Implicit Grant)`](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/auth/oauth-2-implicit-grant.md)
 
 ## List of APIs
 
-* [Orders](doc/controllers/orders.md)
-
-## Webhooks
-
-* [Webhooks](doc/events/webhooks/webhooks-handler.md)
-* [Webhooks A](doc/events/webhooks/webhooks-a-handler.md)
-* [Webhooks B](doc/events/webhooks/webhooks-b-handler.md)
-* [Webhooks C](doc/events/webhooks/webhooks-c-handler.md)
-* [Webhooks No Verification](doc/events/webhooks/webhooks-no-verification-handler.md)
+* [Pet](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/controllers/pet.md)
+* [Store](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/controllers/store.md)
+* [User](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/controllers/user.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](doc/proxy-settings.md)
-* [Environment-Based Client Initialization](doc/environment-based-client-initialization.md)
-* [AbstractLogger](doc/abstract-logger.md)
-* [LoggingConfiguration](doc/logging-configuration.md)
-* [RequestLoggingConfiguration](doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](doc/response-logging-configuration.md)
+* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/environment-based-client-initialization.md)
 
 ### HTTP
 
-* [HttpResponse](doc/http-response.md)
-* [HttpRequest](doc/http-request.md)
-* [Request](doc/request.md)
+* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/http-response.md)
+* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](doc/api-response.md)
-* [ApiHelper](doc/api-helper.md)
-* [HttpDateTime](doc/http-date-time.md)
-* [RFC3339DateTime](doc/rfc3339-date-time.md)
-* [UnixDateTime](doc/unix-date-time.md)
+* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/ZahraN444/wesley-key-python-sdk/tree/4.1.3/doc/unix-date-time.md)
 
