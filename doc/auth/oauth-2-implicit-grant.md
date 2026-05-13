@@ -9,10 +9,10 @@ Documentation for accessing and setting credentials for petstore_auth.
 
 | Name | Type | Description | Getter |
 |  --- | --- | --- | --- |
-| OAuthClientId | `str` | OAuth 2 Client ID | `o_auth_client_id` |
-| OAuthRedirectUri | `str` | OAuth 2 Redirection endpoint or Callback Uri | `o_auth_redirect_uri` |
-| OAuthToken | `OAuthToken` | Object for storing information about the OAuth token | `o_auth_token` |
-| OAuthScopes | `List[OAuthScopePetstoreAuthEnum]` | List of scopes that apply to the OAuth token | `o_auth_scopes` |
+| OAuthClientId | `str` | OAuth 2 Client ID | `oauth_client_id` |
+| OAuthRedirectUri | `str` | OAuth 2 Redirection endpoint or Callback Uri | `oauth_redirect_uri` |
+| OAuthToken | `OauthToken` | Object for storing information about the OAuth token | `oauth_token` |
+| OAuthScopes | `List[OauthScopePetstoreAuth]` | List of scopes that apply to the OAuth token | `oauth_scopes` |
 
 
 
@@ -48,11 +48,11 @@ The access token must be extracted by the client-side JavaScript code. The acces
 
 ### Scopes
 
-Scopes enable your application to only request access to the resources it needs while enabling users to control the amount of access they grant to your application. Available scopes are defined in the [`OAuthScopePetstoreAuthEnum`](../../doc/models/o-auth-scope-petstore-auth-enum.md) enumeration.
+Scopes enable your application to only request access to the resources it needs while enabling users to control the amount of access they grant to your application. Available scopes are defined in the [`OauthScopePetstoreAuth`](../../doc/models/oauth-scope-petstore-auth.md) enumeration.
 
 | Scope Name | Description |
 |  --- | --- |
-| `READPETS` | read your pets |
 | `WRITEPETS` | modify pets in your account |
+| `READPETS` | read your pets |
 
 

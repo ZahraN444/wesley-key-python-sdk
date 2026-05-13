@@ -1,6 +1,8 @@
 
 # User
 
+*This model accepts additional fields of type Any.*
+
 ## Structure
 
 `User`
@@ -17,6 +19,7 @@
 | `password` | `str` | Optional | - |
 | `phone` | `str` | Optional | - |
 | `user_status` | `int` | Optional | User Status |
+| `additional_properties` | `Dict[str, Any]` | Optional | - |
 
 ## Example (as JSON)
 
@@ -26,7 +29,11 @@
   "username": "username6",
   "firstName": "firstName8",
   "lastName": "lastName0",
-  "email": "email0"
+  "email": "email0",
+  "exampleAdditionalProperty": {
+    "key1": "val1",
+    "key2": "val2"
+  }
 }
 ```
 

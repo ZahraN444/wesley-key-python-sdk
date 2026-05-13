@@ -22,10 +22,10 @@ Documentation for accessing and setting credentials for api_key.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```python
-from swaggerpetstore.http.auth.api_key import ApiKeyCredentials
-from swaggerpetstore.swaggerpetstore_client import SwaggerpetstoreClient
+from swaggerpetstoreopenapi30.http.auth.api_key import ApiKeyCredentials
+from swaggerpetstoreopenapi30.swaggerpetstoreopenapi_30_client import Swaggerpetstoreopenapi30Client
 
-client = SwaggerpetstoreClient(
+client = Swaggerpetstoreopenapi30Client(
     api_key_credentials=ApiKeyCredentials(
         api_key='api_key'
     )
